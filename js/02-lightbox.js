@@ -5,8 +5,6 @@ const imageMarkup = createGaleryImgMarkup(galleryItems);
 
 imageContainer.insertAdjacentHTML("beforeend", imageMarkup);
 
-imageContainer.addEventListener("click", onImageContainerClick);
-
 function createGaleryImgMarkup(galleryItems) {
   return galleryItems
     .map(({ preview, original, description }) => {
@@ -19,27 +17,10 @@ function createGaleryImgMarkup(galleryItems) {
     .join("");
 }
 
-function onImageContainerClick(event) {
-  event.preventDefault();
-  const isGalleryImageEl = event.target.classList.contains("gallery__image");
-  if (!isGalleryImageEl) {
-    return;
-  }
-
-  // console.log(event.target.dataset.source);
-
-  
 
   var lightbox = new SimpleLightbox(".gallery a", {
     captionsData: "alt",
     captionDelay: 250,
   });
 
-  function onEscKeyPress(event) {
-    const ESC_KEY_CODE = "Escape";
-    const isEscKey = event.code === ESC_KEY_CODE;
-    if (!isEscKey) return;
-    instance.close();
-  }
-}
 console.log(galleryItems);
